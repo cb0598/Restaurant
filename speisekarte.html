@@ -41,7 +41,13 @@
              </li>     
             <li><a href="speisekarte.html">Speisekarte</a></li> 
             <li><a href="meinebestellung.html">Meine Bestellung</a></li>
-            <li><a href="login.html">BILD</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">BILD</a>
+                <ul class="dropdown-menu">
+                    <li><a href="login.html">*Anmelden bzw. Benutzername*</a></li> 
+                    <li><a href="logout.html">*Abmelden*</a></li>
+                </ul>
+            </li> 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,85 +63,236 @@
                     <img src="img/menu.jpg" alt="Speisekarte Single Page Portfolio">
                    
                 </div>
-                <p>XXX</p>
+
                 <h3>Vorspeisen</h3>
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Anzahl</th>
+                        <th>Gericht</th>
+                        <th>Preis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Minz-Spinat mit Ziegenfrischkäsecreme 
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Exotische Tomatensuppe mit Garnelenspießen 
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                               Spargel-Schinken mit einer feinen Käsesauce
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+                    </tbody>
+                  </table>
+ <!--                 
                     <ul>
                         <li>Minz-Spinat mit Ziegenfrischkäsecreme</li>
                         <li>Exotische Tomatensuppe mit Garnelenspießen</li>
                         <li>Spargel-Schinken mit einer feinen Käsesauce</li>
                     </ul>
-
+-->
                 <h3>Hauptspeisen</h3>
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Anzahl</th>
+                        <th>Gericht</th>
+                        <th>Preis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              <p>Entenkeule mit Knödel und Rotkraut </p> 
+                            </td>
+                            <td class="col-sm-2">9,50 €</td>
+                        </tr>
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Rindergulasch mit Käsespätzle 
+                            </td>
+                            <td class="col-sm-2">8,90 €</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Schnitzel nach Wiener Art mit Pommes und Jägersauce
+                            </td>
+                            <td class="col-sm-2">8,90 €</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                               Schweinefilet mit Zucchini in Gorgonzola-Sahne-Sauce
+                            </td>
+                            <td class="col-sm-2">8,90 €</td>
+                        </tr>
+
+                    </tbody>
+                  </table>
+
+                  <!--
                     <ul>
                         <li>Rindergulasch mit Käsespätzle</li>
                         <li>Schnitzel nach Wiener Art mit Pommes und Jägersauce</li>
                         <li>Schweinefilet mit Zucchini in Gorgonzola-Sahne-Sauce</li>
                     </ul>
-
+                    -->
                 <h3>Desserts</h3>
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Anzahl</th>
+                        <th>Gericht</th>
+                        <th>Preis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Vanillepudding mit zartem Schokoguss 
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Pfannkuchenstreifen mit Quitten-Rosinen-Kompott
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                               Käsekuchen mit hausgemachter Erdbeermarmelade
+                            </td>
+                            <td class="col-sm-2">4,90 €</td>
+                        </tr>
+
+                    </tbody>
+                  </table>
+                <!--
                     <ul>
                         <li>Vanillepudding mit zartem Schokoguss</li>
                         <li>Pfannkuchenstreifen mit Quitten-Rosinen-Kompott</li>
                         <li>Käsekuchen mit hausgemachter Erdbeermarmelade</li>
                     </ul>
+                -->
 
                 <h3>Getränke</h3>
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Anzahl</th>
+                        <th>Getränk</th>
+                        <th>Preis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Coca Cola 0,5l 
+                            </td>
+                            <td class="col-sm-2">3,50 €</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                              Bier vom Fass 0,5l
+                            </td>
+                            <td class="col-sm-2">4,00 €</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="col-sm-1">
+                                <input class="form-control text-input" type="number" value="1">
+                            </td>
+                            <td>
+                               Flasche Tafelwasser
+                            </td>
+                            <td class="col-sm-2">3, 50 €</td>
+                        </tr>
+
+                    </tbody>
+                  </table>
+
+                  <!--
                     <ul>
                         <li>Coca Cola 0,5l</li>
                         <li>Bier vom Fass 0,5l</li>
                         <li>Flasche Tafelwasser</li>
                     </ul>
-
+                    -->
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail bg-grey text-center">
-                    <h2>Tagesmenü</h2>
-                    <p>X</p>
+                    <h2>Gericht des Tages</h2>
+                    <p>Entenkeule mit Knödel und Rotkraut </p>
+                    <img src="img/entenkeule.jpg" alt="Entenkeule">
+                    <br>
+                    <p>9,50€ </p>
                     
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Theme Author</h3>
-                    </div>
-                    <div class="panel-body bg-grey text-center">
-                        <img src="img/swoopthemes.jpg" alt="Swoop Themes" class="img-circle">
-                        <h4>Swoop Themes</h4>
-                    </div>  
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Theme Attributes</h3>
-                    </div>
-                    <table class="table table-bordered table-striped">
-                        <tbody>
-                            <tr>
-                                <td>Category</td>
-                                <td>Portfolio</td>
-                            </tr>
-                            <tr>
-                                <td>Version</td>
-                                <td>1</td>
-                            </tr>   
-                            <tr>
-                                <td>Bootstrap</td>
-                                <td>3.1.1</td>
-                            </tr>
-                            <tr>
-                                <td>Tags</td>
-                                <td>portfolio, responsive, clean, showcase, single page</td>
-                            </tr>
-                            <tr>
-                                <td>Release Date</td>
-                                <td>Jun 20, 2014</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+              </div>
         </div>
     </div>	
-	
-	
 		    
     <!-- Fixed footer -->
     <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

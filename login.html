@@ -41,7 +41,13 @@
              </li>     
             <li><a href="speisekarte.html">Speisekarte</a></li> 
             <li><a href="meinebestellung.html">Meine Bestellung</a></li>
-            <li><a href="login.html">BILD</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">BILD</a>
+                <ul class="dropdown-menu">
+                    <li><a href="login.html">*Anmelden bzw. Benutzername*</a></li> 
+                    <li><a href="logout.html">*Abmelden*</a></li>
+                </ul>
+            </li> 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -51,8 +57,27 @@
         <div class="page-header">
             <h1>Login</h1>
         </div>
+
+        <div class ="row">
+            <div class="form-group">
+                <label for="contact-name" class="col-sm-10 control-label">E-Mail oder Benutzername</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="" placeholder="">
+                </div>
+            </div>
+            
+                                          
+            <div class="form-group">
+                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="" placeholder="*********">
+                </div>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
+        <button type="submit" class="btn btn-primary">Anmelden</button>       
     </div>
- <!--Hier Inhalt-->
             
     <!-- Fixed footer -->
     <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
