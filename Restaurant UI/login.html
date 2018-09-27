@@ -58,25 +58,69 @@
             <h1>Login</h1>
         </div>
 
-        <div class ="row">
-            <div class="form-group">
-                <label for="contact-name" class="col-sm-10 control-label">E-Mail oder Benutzername</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="" placeholder="">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Gäste-Login</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class ="row">
+                            <div class="form-group">
+                                <label for="contact-name" class="col-sm-10 control-label">Tischnummer</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" placeholder="">
+                                </div>
+                            </div>
+                                                
+                            <div class="form-group">
+                                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" placeholder="*********">
+                                </div>
+                            </div>
+                        </div>
+                    <br>
+                    <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
+                    <button type="submit" class="btn btn-primary">Anmelden</button>    
+
+                    </div>
                 </div>
             </div>
-            
-                                          
-            <div class="form-group">
-                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="" placeholder="*********">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Mitarbeiter-Login</a>
+                    </h4>
                 </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class ="row">
+                            <div class="form-group">
+                                <label for="contact-name" class="col-sm-10 control-label">Benutzername</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" placeholder="">
+                                </div>
+                            </div>
+                                                
+                            <div class="form-group">
+                                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" placeholder="*********">
+                                </div>
+                            </div>
+                        </div>
+                    <br>
+                    <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
+                    <button type="submit" class="btn btn-primary">Anmelden</button>    
+                </div>
+            </div>
             </div>
         </div>
-        <br>
-        <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
-        <button type="submit" class="btn btn-primary">Anmelden</button>       
+
+   
     </div>
             
     <!-- Fixed footer -->
@@ -86,10 +130,49 @@
                 <p>© 2018 Restaurant Plöck</p>
             </div>
             <div class="navbar-text pull-right">
-                <a href="impressum.html">Impressum</a>      
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#openModal">Bedienung rufen</button>
+                <a href="impressum.html" data-toggle="modal" data-target="#openModal">Impressum</a>      
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+        <div class="modal fade" id="openModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLongTitle">Bestätigen Sie bitte Ihre Bestellung!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                    <div class="well" style="font-size: 16px">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">Bezahlen</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">Sonstiges</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">Besteck fehlt</label>
+                        </div>
+                 
+                    <br>
+                    
+                    <button type="button"" class="btn btn-primary" data-dismiss="modal">Bedienung rufen</button>
+                   
+             
+              </div>
+            </div>
+          </div>
+        </div> 
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
