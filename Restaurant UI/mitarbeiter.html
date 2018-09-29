@@ -28,19 +28,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Start</a></li>       
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wir über uns <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="unserePhilosophie.html">Unsere Philosophie</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li> 
-                    <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
-                    <li><a href="fotosundvideos.html">Fotos und Videos</a></li>
-                    <li><a href="dasteam.html">Das Team</a></li>
-                </ul>
-             </li>     
+            <li><a href="index.html">Start</a></li>   
             <li><a href="speisekarte.html">Speisekarte</a></li> 
-            <li><a href="meinebestellung.html">Meine Bestellung</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">BILD</a>
                 <ul class="dropdown-menu">
@@ -96,7 +85,32 @@
             </table>
         </div> 
 
-        * Tische * 
+        <br>
+        <h1>Tische</h1>
+        <canvas id="myCanvas" width="800" height="400"
+            style="border:1px solid #c3c3c3;">
+            Your browser does not support the canvas element.
+        </canvas>
+
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
+            // if/else Bedingung einfügen: wenn Tisch belegt & Bestellung aufgegeben, dann rot
+
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(0,0,100,50);
+            
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(0,100,100,50);
+
+            ctx.fillStyle = "#32CD32";
+            ctx.fillRect(0,200,100,50);
+
+            ctx.fillStyle = "#32CD32";
+            ctx.fillRect(0,300,100,50);
+
+        </script> 
     </div>
             
     <!-- Fixed footer -->
@@ -106,49 +120,10 @@
                 <p>© 2018 Restaurant Plöck</p>
             </div>
             <div class="navbar-text pull-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#openModal">Bedienung rufen</button>
                 <a href="impressum.html" data-toggle="modal" data-target="#openModal">Impressum</a>      
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-        <div class="modal fade" id="openModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLongTitle">Haben Sie einen Wunsch?</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                    <div class="well" style="font-size: 16px">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Bezahlen</label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Sonstiges</label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Besteck fehlt</label>
-                        </div>
-                 
-                    <br>
-                    
-                    <button type="button"" class="btn btn-primary" data-dismiss="modal">Bedienung rufen</button>
-                   
-             
-              </div>
-            </div>
-          </div>
-        </div> 
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
