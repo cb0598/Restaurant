@@ -3,6 +3,7 @@ package meine_servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -49,6 +50,18 @@ public class Servlet01 extends HttpServlet {
 		String contextParameterWert = this.getInitParameter(contextParameterName);
 		out.println("Der Context-Parameter " + contextParameterName + " hat den Wert " +
 		contextParameterWert + ".");
+		
+		// Bean in Servlet
+		Mitarbeiter eObj = new Mitarbeiter();
+		eObj.setEmp_id(101);
+		eObj.setEmp_name("LJava Code Geeks");
+		eObj.setEmp_passwort("test123");
+
+		/**** Storing Bean In Session ****/
+		request.getSession().setAttribute("emp", eObj);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
