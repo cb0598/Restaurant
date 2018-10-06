@@ -27,35 +27,51 @@
     <!-- Fixed navbar -->
     <div id="navbar">
     </div>
+    <style>
+    .panelTop{
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+  </style>
     <div class="container">
         <div class="page-header">
             <h1>Kontakt</h1>
         </div>
 
-        <h3>Adresse und Telefonnummer<h3>
-        <div class="well" style="font-size: 16px">
-            <p>Restaurant Plöck</p>
-            <p>Plöck 20.</p>
-            <p>69117 Heidelberg</p>
-            <p>06221 969798</p>
-            <p>restaurant.ploeck@gmail.com</p>
-        </div>
-
-        <h3>Anfahrt</h3>
-        <div class="well">
-            <div align="center">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.9800439518403!2d8.697193715275648!3d49.40928306971368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797c1034d3aeaa9%3A0xc411021e7d1049af!2sPl%C3%B6ck%2C+Heidelberg!5e0!3m2!1sde!2sde!4v1537539053680" width="600" height="450" allowfullscreen>
-              </iframe>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panelTop">Adresse und Telefonnummer</h3>
+            </div>
+            <div class="panel-body" style="font-size: 16px">
+                <p>Restaurant Plöck</p>
+                <p>Plöck 20.</p>
+                <p>69117 Heidelberg</p>
+                <p>06221 969798</p>
+                <p>restaurant.ploeck@gmail.com</p>
             </div>
         </div>
 
-        <h3>Kontakt aufnehmen</h3>
-        <div class="well" style="font-size: 16px">
-            <p>Wollen Sie uns eine Frage stellen? <br>Haben Sie Anregungen? <br>Wollen Sie uns loben oder uns Kritik mitteilen? <br>Dann kontaktieren Sie uns über unser Kontaktformular!<p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact">Nachricht verfassen</button>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panelTop">Anfahrt</h3>
+            </div>
+            <div class="panel-body">
+                <div align="center">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.9800439518403!2d8.697193715275648!3d49.40928306971368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797c1034d3aeaa9%3A0xc411021e7d1049af!2sPl%C3%B6ck%2C+Heidelberg!5e0!3m2!1sde!2sde!4v1537539053680" width="600" height="450" allowfullscreen>
+              </iframe>
+            </div>
+            </div>
         </div>
-    </div>
- <!--Hier Inhalt-->
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panelTop">Kontakt aufnehmen</h3>
+            </div>
+            <div class="panel-body" style="font-size: 16px">
+                <p>Wollen Sie uns eine Frage stellen? <br>Haben Sie Anregungen? <br>Wollen Sie uns loben oder uns Kritik mitteilen? <br>Dann kontaktieren Sie uns über unser Kontaktformular!<p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact">Nachricht verfassen</button>
+            </div>
+        </div>
             
     <!-- Fixed footer -->        
     <div id="footer">
@@ -68,7 +84,7 @@
             <div class="modal-content">
               <form class="form-horizontal" role="form">
                     <div class="modal-header">
-                        <h4>Kontakt<h4>
+                        <h2 class="modal-title">Kontakt</h2>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
