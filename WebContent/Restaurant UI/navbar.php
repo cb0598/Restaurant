@@ -1,14 +1,21 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BootstrapBay Tutorial</title>
+    <title>Navigationsleiste</title>
 
  </head>
 
  <body>
+  <?php if (isset($_GET['logout'])) {
+    setcookie("userName", "", time()-3600);
+    session_destroy();
+    //unset($_SESSION['username']);
+    header("location: login.php");
+  }?>
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -35,11 +42,13 @@
              </li>     
             <li><a href="speisekarte.php">Speisekarte</a></li> 
             <li><a href="meinebestellung.php">Meine Bestellung</a></li>
+            <li><a><b><?php if (isset($_COOKIE['userName'])) {
+            echo $_COOKIE['userName'];}?></b></a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/account.svg"></img><b class="caret"></b> </a>
                 <ul class="dropdown-menu">
-                    <li><a href="login.php">*Anmelden bzw. Benutzername*</a></li> 
-                    <li><a href="logout.html">*Abmelden*</a></li>
+                    <li><a href="login.php">Anmelden</a></li> 
+                    <li><a href="logout.php">Abmelden</a></li><!--logout.html-->
                 </ul>
              </li> 
           </ul>

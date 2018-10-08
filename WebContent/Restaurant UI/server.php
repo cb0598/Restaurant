@@ -30,9 +30,9 @@ session_start();
             if (mysqli_num_rows($result) == 1) {
                 //$_SESSION['username'] = $username;
                 //$_SESSION['success'] = "Sie sind nun eingeloggt";
-                $eingeloggtAls = "Sie sind eingeloggt als: $username";
+                $eingeloggtAls = "$username";
                 setcookie("userName", $eingeloggtAls);
-                header('location: index.php');
+                header('location: index.html');
             } else {
                 array_push($errors, "Der Benutzername oder das Passwort sind inkorrekt!");
             }
@@ -65,7 +65,7 @@ session_start();
                 $eingeloggtAls = "Sie sind eingeloggt als: $tischnr";
                 setcookie("userName", $eingeloggtAls);
 
-                header('location: index.php');
+                header('location: index.html');
             } else {
                 array_push($errors2, "Der Benutzername oder das Passwort sind inkorrekt!");
             }

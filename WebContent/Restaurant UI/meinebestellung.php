@@ -20,7 +20,7 @@ include("dbconnect.php");
     <script type="text/javascript" >
         
             $(document).ready(function() {
-                $('#navbar').load('navbar.html');
+                $('#navbar').load('navbar.php');
                 $('#footer').load('footer.html');
                 });
             </script>
