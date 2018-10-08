@@ -1,11 +1,14 @@
+<?php
+ini_set('display_errors', '1');
+include("dbconnect.php");
+include("server.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bootstrap 3 Tutorial from BootstrapBay.com">
-    <meta name="author" content="BootstrapBay.com">
     <title>Login</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -16,8 +19,7 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <body>
-        <script type="text/javascript" >
-        
+        <script>
             $(document).ready(function() {
               
                 $('#footer').load('footer.html');
@@ -43,7 +45,10 @@
             <h1>Login</h1>
         </div>
 
+        <?php echo $_COOKIE['userName'];?>
+
         <div class="panel-group" id="accordion">
+            <!--LOGIN 1-->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -53,59 +58,71 @@
                 <div id="collapse1" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div class ="row">
-                            <div class="form-group">
-                                <label for="contact-name" class="col-sm-10 control-label">Tischnummer</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="" placeholder="">
+
+                           <form id="loginformGast" method="post" action="login.php">
+                                <?php include('errors2.php');?>
+                                <div class="form-group">
+
+                                    <label for="contact-name" class="col-sm-10 control-label">Tischnummer</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="usernameGast" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                                                
-                            <div class="form-group">
-                                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="" placeholder="*********">
+                                                    
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-10 control-label">Passwort</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" name="passwordGast" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+
                         </div>
                     <br>
                     <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
-                    <button type="submit" class="btn btn-primary" onclick= "window.location.href = 'index.html'" "startseiteAufrufen()">Anmelden</button>    
+                    <button form="loginformGast" type="submit" class="btn btn-primary" name="login_userGast">Login</button>
 
                     </div>
                 </div>
             </div>
+
+            <!--LOGIN 2-->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Mitarbeiter-Login</a>
                     </h4>
                 </div>
-            <div id="collapse2" class="panel-collapse collapse">
+            <div id="collapse2" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class ="row">
+
+                        <form id="loginform" method="post" action="login.php">
+                                <?php include('errors.php');?>
                             <div class="form-group">
                                 <label for="contact-name" class="col-sm-10 control-label">Benutzername</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="" placeholder="">
+                                    <input type="text" name="username" class="form-control">
                                 </div>
                             </div>
                                                 
                             <div class="form-group">
-                                <label for="passwort" class="col-sm-10 control-label">Passwort</label>
+                                <label for="passwordMitarbeiter" class="col-sm-10 control-label">Passwort</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="" placeholder="*********">
+                                    <input type="password" name="password" class="form-control">
                                 </div>
                             </div>
+                        </form>
                         </div>
                     <br>
                     <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
-                    <button type="submit" class="btn btn-primary" onclick= "window.location.href = 'mitarbeiter.html'" "mitarbeiterseiteAufrufen()">Anmelden</button>    
+                    <button form="loginform" type="submit" class="btn btn-primary" name="login_user">Login</button>
+
+                    <!--<button type="submit" class="btn btn-primary" onclick= "window.location.href = 'mitarbeiter.html'" "mitarbeiterseiteAufrufen()">Anmelden</button>-->                           
                 </div>
             </div>
             </div>
         </div>
-
-   
     </div>
 
     <script type="text/javascript">

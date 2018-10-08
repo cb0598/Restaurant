@@ -1,11 +1,12 @@
+<?php
+include("dbconnect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bootstrap 3 Tutorial from BootstrapBay.com">
-    <meta name="author" content="BootstrapBay.com">
     <title>Meine Bestellung</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -54,37 +55,45 @@
                      <tr>
                         <th>Anzahl</td>
                         <th>Gericht</thd>
-                        <th>Für wen?</th>
+                        <th>Speiseart</th>
+                        <th>Einzelpreis</th>
                         <th>Preis</th>
                      </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1 </td>
-                        <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                        <td>Erwachsener</td>
-                        <td><input name="anzahl" id="input" size="2" value="8.9€">
-                    </tr>
+                    <?php
+                            $sql = "SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)";
 
-                    <tr>
-                        <td>1 </td>
-                        <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                        <td>Erwachsener</td>
-                        <td><input name="anzahl" id="input" size="2" value="8.9€"></td>
-                    </tr>
-                    <tr>
-                        <td>1 </td>
-                        <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                        <td>Erwachsener</td>
-                        <td><input name="anzahl" id="input" size="2" value="8.9€"></td>
-                    </tr>
+                            $erg = $db->query("SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)")
+                                        or die($db->error);  
+
+                            $datensatz = $erg->fetch_assoc();//den ersten Datensatz ausgeben
+                            echo "<pre>";
+                            print_r($datensatz);
+                            echo "</pre>";
+
+                            $result = $db-> query($sql);
+
+                            $summe = 0;
+
+                            if ($result-> num_rows > 0) {
+                                while ($row = $result-> fetch_assoc()) {
+                                    echo "<tr><td>" . $row["bestellteMenge"] . "</td><td>" . $row["Name"] . "</td><td>" . $row["Speiseart"] . "</td><td>" . $row["Preis"] . " €</td><td>" . $row["Preis"] * $row["bestellteMenge"] ." €</td></tr>";
+                                    $summe += $row["Preis"] * $row["bestellteMenge"];
+                                }
+                            }
+                        ?>
+
                 </tbody>
                 <tfoot>
                     <tr>
                         <td> </td>
                         <td> </td>
                         <td> </td>
-                        <td><input name="ausgabe" id="output" size="2"></td>
+                        <td style="text-align: right;"><b>Zu zahlen:</b></td>
+                        <?php
+                            echo "<td><b>$summe €</b></td>";
+                        ?>
                     </tr>
                 </tfoot>
             </table>
