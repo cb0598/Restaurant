@@ -10,6 +10,7 @@ session_start();
     $tischnr = "";
     $errors2 = array();
 
+    //Mitarbeiter-Login
     if (isset($_POST['login_user'])) {
         
         $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -32,6 +33,13 @@ session_start();
                 //$_SESSION['success'] = "Sie sind nun eingeloggt";
                 $eingeloggtAls = "$username";
                 setcookie("userName", $eingeloggtAls);
+                $isMitarbeiter = "true";
+                setcookie("isMitarbeiter", $isMitarbeiter);
+
+                $row = $result-> fetch_assoc();
+                $mitarbeiterNummer = $row["MitarbeiterNr"];
+                setcookie("mitarbeiterNr", $mitarbeiterNummer);
+
                 header('location: index.html');
             } else {
                 array_push($errors, "Der Benutzername oder das Passwort sind inkorrekt!");
@@ -39,6 +47,7 @@ session_start();
         }
     }
 
+    //Gast-Login
     if (isset($_POST['login_userGast'])) {
         
         $tischnr = mysqli_real_escape_string($db, $_POST['usernameGast']);
@@ -60,10 +69,12 @@ session_start();
                 //$_SESSION['username'] = $username;
                 //$_SESSION['success'] = "Sie sind nun eingeloggt";
 
-                $nummerTisch = "Sie sind eingeloggt als: Tisch Nummer $tischnr";
+                $nummerTisch = "$tischnr";
                 setcookie("tischNr", $nummerTisch);
-                $eingeloggtAls = "Sie sind eingeloggt als: $tischnr";
+                $eingeloggtAls = "Tisch Nr. $tischnr";
                 setcookie("userName", $eingeloggtAls);
+                $isMitarbeiter = "false";
+                setcookie("isMitarbeiter", $isMitarbeiter);
 
                 header('location: index.html');
             } else {

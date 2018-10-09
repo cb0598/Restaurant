@@ -41,14 +41,25 @@
                 </ul>
              </li>     
             <li><a href="speisekarte.php">Speisekarte</a></li> 
-            <li><a href="meinebestellung.php">Meine Bestellung</a></li>
-            <li><a><b><?php if (isset($_COOKIE['userName'])) {
-            echo $_COOKIE['userName'];}?></b></a></li>
+            <?php if (isset($_COOKIE['userName']) && $_COOKIE['isMitarbeiter'] == "false") {
+              echo "<li><a href='meinebestellung.php'>Meine Bestellung</a></li>";
+            }?>
+            <?php if (isset($_COOKIE['userName']) && $_COOKIE['isMitarbeiter'] == "true") {
+              echo "<li><a href='mitarbeiter.php'>Übersicht</a></li>"; 
+            }?>
+            <?php if (isset($_COOKIE['userName'])) {
+            echo "<li><a><b>" . $_COOKIE['userName'] . "</b></a></li>";}?>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/account.svg"></img><b class="caret"></b> </a>
                 <ul class="dropdown-menu">
-                    <li><a href="login.php">Anmelden</a></li> 
-                    <li><a href="logout.php">Abmelden</a></li><!--logout.html-->
+                    <?php if (!isset($_COOKIE['userName'])) {
+                      echo "<li><a href='login.php'>Anmelden</a></li>";
+                    }
+                     
+                    ?>
+                    <?php if (isset($_COOKIE['userName'])) {
+                      echo "<li><a href='logout.php'>Abmelden</a></li>";
+                    }?>
                 </ul>
              </li> 
           </ul>

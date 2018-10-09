@@ -54,23 +54,24 @@ include("dbconnect.php");
                 <thead>
                      <tr>
                         <th>Anzahl</td>
-                        <th>Gericht</thd>
+                        <th>Gericht</th>
                         <th>Speiseart</th>
                         <th>Einzelpreis</th>
-                        <th>Preis</th>
+                        <th>Gesamtpreis</th>
                      </tr>
                 </thead>
                 <tbody>
                     <?php
-                            $sql = "SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)";
+                            $tischnummer = $_COOKIE['tischNr'];
+                            $sql = "SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)  WHERE TischNr='$tischnummer'";
 
-                            $erg = $db->query("SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)")
+                            /*$erg = $db->query("SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr) WHERE TischNr='$tischnummer'")
                                         or die($db->error);  
 
                             $datensatz = $erg->fetch_assoc();//den ersten Datensatz ausgeben
                             echo "<pre>";
                             print_r($datensatz);
-                            echo "</pre>";
+                            echo "</pre>";*/
 
                             $result = $db-> query($sql);
 
@@ -78,7 +79,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td>" . $row["bestellteMenge"] . "</td><td>" . $row["Name"] . "</td><td>" . $row["Speiseart"] . "</td><td>" . $row["Preis"] . " €</td><td>" . $row["Preis"] * $row["bestellteMenge"] ." €</td></tr>";
+                                    echo "<tr><td>" . $row["bestellteMenge"] . "</td><td>" . $row["Name"] . "</td><td>" . $row["Speiseart"] . "</td><td>" . $row["Preis"] . " €</td><td>" . number_format((float)$row["Preis"] * $row["bestellteMenge"], 2, '.', '') ." €</td></tr>";
                                     $summe += $row["Preis"] * $row["bestellteMenge"];
                                 }
                             }
@@ -92,7 +93,7 @@ include("dbconnect.php");
                         <td> </td>
                         <td style="text-align: right;"><b>Zu zahlen:</b></td>
                         <?php
-                            echo "<td><b>$summe €</b></td>";
+                            echo "<td><b>" . number_format((float)$summe, 2, '.', '') . " €</b></td>";
                         ?>
                     </tr>
                 </tfoot>
