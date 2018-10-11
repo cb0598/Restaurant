@@ -74,7 +74,7 @@
                                                     $summe = 0;
                                             }
                                             echo "
-                                                <button type='button' class='close' aria-label='Close'>
+                                                <button type='button' onclick='getDataID(" . $currentRow . ")' class='close' data-toggle='modal' data-target='#bestaetigung' aria-label='Close'>
                   									<span aria-hidden='true'>&times;</span>
                 								</button>
                 								<h3>Tisch Nr. " . $currentRow . "</h3>	
@@ -161,6 +161,59 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <!--Modal-Bestätigung-->
+    <div class="modal fade" id="bestaetigung" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h2 class="modal-title">Bestätigung</h2>
+            </div>
+            <div class="modal-body">
+                <div id="bestaetigungContentID">
+                    <!--Inhalt im Dialog Mitarbeiter-->
+                    <p>Sind Sie sicher, dass Sie die folgenden Datensätze löschen wollen?</p>
+
+                    <div class="alert alert-danger">
+                    	<p>Löschen Sie Datensätze nur dann, wenn ein Kunde seine Rechnung bezahlt hat und das Restaurant verlassen hat.</p>
+                    </div>
+
+                    <p>Möchten Sie fortfahren?</p>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>
+                <button class="btn btn-primary" data-dismiss="modal" role="button">Schließen</button>
+                <button class="btn btn-danger" onclick="deleteData()" data-dismiss="modal" role="button">Löschen</button>
+                </p>  
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+    	var dataID = null;
+    	function getDataID(id){
+    		console.log(id);
+    		dataID = id;
+    	}
+
+    	function deleteData(){
+    		$.ajax({
+                url: "deleteData.php",
+                method: "GET",
+                data: { dataID },
+                success: data => {
+                    
+                }
+            })
+    	}
+    </script>
 
   </body>
 </html>

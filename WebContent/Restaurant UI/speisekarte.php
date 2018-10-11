@@ -16,7 +16,7 @@ include("dbconnect.php");
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
-  <body onload="doSum()">
+  <body> <!-- onload="doSum()"-->
     <script>
         $(document).ready(function() {
             $('#navbar').load('navbar.php');
@@ -33,10 +33,6 @@ include("dbconnect.php");
     <!-- Fixed navbar -->
     <div id="navbar">
     </div>
-
-    <?php 
-        $dochtml = new DOMDocument();
-    ?>
     
 	<div class="container">
         <div class="page-header">
@@ -69,7 +65,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' min='0' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -98,7 +94,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' min='0' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -126,7 +122,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' min='0' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -157,7 +153,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' min='0' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -179,6 +175,15 @@ include("dbconnect.php");
 
         <br>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#openBestellbestätigung">Bestellung aufgeben</button>
+        <p></p>
+
+        <div class="alert alert-success" id="successDialog" style="width: 50%; display: none;">
+                    <p><b>Ihre Bestellung wurde erfolgreich übermittelt!</b></p>
+        </div>
+
+        <div class="alert alert-danger" id="dangerDialog" style="width: 50%; display: none;">
+                    <p><b>Bitte wählen Sie ein Gericht aus um eine Bestellung aufzugeben!</b></p>
+        </div>
     </div>
 
     <script>
@@ -208,35 +213,7 @@ include("dbconnect.php");
             <div class="modal-body">
                 <div id="detailsContentID">
                     <!--Inhalt im Dialog Mitarbeiter-->
-                    <!--<table class="table" id="">
-
-
-                            <?php 
-                                
-                                //$sqlDialog = "SELECT * FROM speise WHERE SpeiseNr = $test";
-                                //$resultDialog = $db-> query($sqlDialog);
-
-                                //$rowDialog = $resultDialog-> fetch_assoc();
-                                /*echo "<tr>
-                                        <td class='col-sm-1'>" . $rowDialog['Name'] . "</td>
-                                        <td>test1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>test</td>
-                                        <td>test1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>test</td>
-                                        <td>test1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>test</td>
-                                        <td>test1</td>
-                                    </tr>";
-                                echo "testchen";*/
-                            ?>
-                        
-                    </table>-->
+                    
                 </div>
             </div>
             <div class="modal-footer">
@@ -249,72 +226,30 @@ include("dbconnect.php");
     </div>
 
     <!-- Modal -->
-    <form action="">
-        <div class="modal fade" id="openBestellbestätigung" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
+    <div class="modal fade" id="openBestellbestätigung" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="exampleModalLongTitle">Bestätigen Sie bitte Ihre Bestellung!</h2>
-              </div>
-              <div class="modal-body">
-                    <div class="well" style="font-size: 16px">
-                    <table class="table">
-                        <thead>
-                             <tr>
-                                <th class="col-sm-1">Anzahl</td>
-                                <th class="col-sm-8">Gericht</thd>
-                                <th class="col-sm-2">Für wen?</th>
-                                <th class="col-sm-2">Preis</th>
-                                <th class="col-sm-2"></th>
-                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1 </td>
-                                <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                                <td>Erwachsener</td>
-                                <td><input name="anzahl" id="input" size="2" value="8.9€"></td>
-                                <td> <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#contact">Entfernen</button>
-                            </tr>
-
-                            <tr>
-                                <td>1 </td>
-                                <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                                <td>Erwachsener</td>
-                                <td><input name="anzahl" id="input" size="2" value="8.9€"></td>
-                                <td> <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#contact">Entfernen</button>
-                            </tr>
-                            <tr>
-                                <td>1 </td>
-                                <td>Hauptspeise: Rindergulasch mit Käsespätzle</td>
-                                <td>Erwachsener</td>
-                                <td><input name="anzahl" id="input" size="2" value="8.9€"></td>
-                                <td> <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#contact">Entfernen</button>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td><input name="ausgabe" id="output" size="2"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-
-                <br>
-                 <button type="submit" class="btn btn-primary">Jetzt kostenpflichtig bestellen</button>
-                   
-             
-              </div>
+                <h2 class="modal-title">Bestätigen Sie bitte Ihre Bestellung!</h2>
             </div>
-          </div>
-      </form>
-        </div> 
+            <div class="modal-body">
+                <p>
+                    Ihre Bestellung ist fast abgeschlossen. Bestätigen Sie Ihre Bestellung mit der Schaltfläche im unteren Bereich.
+                </p>
+                <div class="alert alert-warning">
+                    <p>Bitte kontrollieren Sie Ihre Bestellung bevor Sie die Bestellung abschicken. Aufgegebene Bestellungen können nicht rückgängig gemacht werden.</p>
+                </div>
+                
+
+                <button type="submit" onclick="orderProducts()" data-dismiss='modal' class="btn btn-primary">Jetzt kostenpflichtig bestellen</button>
+
+            </div>
+        </div>
+        </div>
+    </div> 
 
     <!-- Fixed footer -->        
     <div id="footer">
@@ -326,105 +261,51 @@ include("dbconnect.php");
 
     <script>
         function getInfoButtonID(id){
-            //console.log(id);
-
-            //var variableToSend = id;
-            //$.post('speisekarte.php', {variable: variableToSend});
-
-
-
             $.ajax({
                 url: "details.php",
                 method: "GET",
                 data: { id },
-                //dataType: "JSON",
                 success: data => {
-                    console.log(data);
                     document.getElementById('detailsContentID').innerHTML = data;
                 }
             })
+        }
 
-
-            /*$.ajax({
-            type: "POST",
-            url: "speisekarte.php",
-            data: {"id":id},
-                        success: function(response) {
-                        }})
-
-            <?php
-            //$uid = isset($_POST['id']);
-            //echo "hat geklappt!!!";
-            //rest of code that uses $uid
-            ?>*/
+        function orderProducts(){
+            var orders = [];
+            var amounts = [];
 
             $("input:checkbox").each(function(){
                 var $this = $(this);
             
                 if($this.is(":checked")){
-                    console.log($this.attr("id"));
+                    orders.push($this.attr("id"));
+                    $this.closest('tr').find("input").each(function() {
+                        if (this.value != "on") {
+                            amounts.push(this.value);
+                        }
+                    });
                 }else{
                     //someObj.fruitsDenied.push($this.attr("id"));
                 }
             });
-                
-
-            /*$(".clickable").click(function() {
-                var userID = $(this).attr('id');
-                //alert($(this).attr('id'));
+            for (var i = 0; i < orders.length; i++) {
+                var order = orders[i];
+                var amount = amounts[i];
                 $.ajax({
-                    type: "POST",
-                    url: 'logtime.php',
-                    data: "userID=" + userID,
-                    success: function(data)
-                    {
-                        alert("success!");
+                    url: "bestellung.php",
+                    method: "GET",
+                    data: { order, amount },
+                    success: data => {
+                        document.getElementById("successDialog").style["display"] = "block";
                     }
-                });
-            });
+                })
+            }
+                if (orders === undefined || orders.length == 0) {
+                    document.getElementById("dangerDialog").style["display"] = "block";
+                }
 
-        <?php //logtime.php
-        //$uid = isset($_POST['userID']);
-        //rest of code that uses $uid
-        ?>*/
         }
     </script>
-
-                <?php 
-                if (isset($_COOKIE['tischNr'])) {//prüfen ob TischNr gesetzt
-                    $tischNummer = $_COOKIE['tischNr'];
-
-                    //MitarbeiterNr setzen
-                    if ($tischNummer == 1 || $tischNummer == 3 || $tischNummer == 5) {
-                        $mitarbeiterNummer = 1;
-                    } else {
-                        $mitarbeiterNummer = 2;
-                    }
-
-                    //SPEISE-NR HIER
-
-                    //bestellteMenge HIER
-
-                    $sqlWrite = "INSERT INTO bestellung (TischNr, SpeiseNr, MitarbeiterNr, bestellteMenge)
-                                VALUES ($tischNummer, 10, $mitarbeiterNummer, 2)";
-                    if ($db-> query($sqlWrite) === TRUE) {
-                        echo "Datensatz erfolgreich eingefügt";
-                    } else {
-                        echo "Fehler: " . $sqlWrite . "<br>" . $db->error;
-                    }
-
-                } else {
-                    header('location: login.php');
-                    echo "<h1>BITTE ANMELDEN</h1>";
-                }
-                
-                
-
-
-
-
-
-
-                ?>
   </body>
 </html>
