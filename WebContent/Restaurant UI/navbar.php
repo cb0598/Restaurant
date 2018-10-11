@@ -13,7 +13,6 @@
   <?php if (isset($_GET['logout'])) {
     setcookie("userName", "", time()-3600);
     session_destroy();
-    //unset($_SESSION['username']);
     header("location: login.php");
   }?>
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -44,8 +43,10 @@
               echo "<li><a href='meinebestellung.php'>Meine Bestellung</a></li>";
             }?>
             <?php if (isset($_COOKIE['userName']) && $_COOKIE['isMitarbeiter'] == "true") {
-              echo "<li><a href='mitarbeiter.php'>Übersicht</a></li>"; 
+              echo "<li><a href='mitarbeiter.php'>Übersicht</a></li>";
+              echo "<li><a href='mitarbeiterDienstplan.jsp'>Dienstplan</a></li>";
             }?>
+
             <?php if (isset($_COOKIE['userName'])) {
             echo "<li><a><b>" . $_COOKIE['userName'] . "</b></a></li>";}?>
             <li class="dropdown">

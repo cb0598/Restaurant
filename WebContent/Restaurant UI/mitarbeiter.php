@@ -135,21 +135,43 @@
 
             ctx.fillStyle = "#FF0000";
             ctx.fillRect(200,75,100,50);
+
+            ctx.fillStyle = "#000000";
+            ctx.font="20px Arial";
+            ctx.fillText("Tisch Nr. 1",200,145);
+
+            ctx.fillStyle = "#000000";
+            ctx.fillText("!!!",243,105);
             
             ctx.fillStyle = "#FF0000";
             ctx.fillRect(200,175,100,50);
 
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Tisch Nr. 2",200,245);
+
             ctx.fillStyle = "#32CD32";
             ctx.fillRect(200,275,100,50);
+
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Tisch Nr. 3",200,345);
 
             ctx.fillStyle = "#32CD32";
             ctx.fillRect(500,75,100,50);
 
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Tisch Nr. 4",500,145);
+
             ctx.fillStyle = "#32CD32";
             ctx.fillRect(500,175,100,50);
 
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Tisch Nr. 5",500,245);
+
             ctx.fillStyle = "#32CD32";
             ctx.fillRect(500,275,100,50);
+
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Tisch Nr. 6",500,345);
 
         </script> 
     </div>
