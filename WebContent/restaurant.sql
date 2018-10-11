@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Okt 2018 um 19:30
+-- Erstellungszeit: 11. Okt 2018 um 11:52
 -- Server-Version: 10.1.35-MariaDB
 -- PHP-Version: 7.2.9
 
@@ -66,7 +66,16 @@ INSERT INTO `bestellung` (`BestellNr`, `TischNr`, `SpeiseNr`, `MitarbeiterNr`, `
 (3, 1, 11, 1, 3, '2018-10-04 08:19:04'),
 (4, 1, 6, 1, 1, '2018-10-07 19:09:05'),
 (5, 1, 11, 1, 1, '2018-10-07 19:09:05'),
-(6, 1, 4, 1, 1, '2018-10-08 12:52:55');
+(6, 1, 4, 1, 1, '2018-10-08 12:52:55'),
+(7, 2, 12, 2, 1, '2018-10-09 12:59:01'),
+(8, 3, 10, 1, 2, '2018-10-09 13:01:28'),
+(9, 4, 2, 2, 2, '2018-10-09 13:01:46'),
+(10, 5, 6, 1, 2, '2018-10-09 13:02:29'),
+(11, 6, 22, 2, 3, '2018-10-09 13:02:29'),
+(12, 5, 18, 1, 2, '2018-10-09 16:03:46'),
+(14, 6, 1, 2, 1, '2018-10-10 21:51:06'),
+(15, 4, 2, 2, 4, '2018-10-10 22:10:23'),
+(16, 2, 10, 2, 2, '2018-10-10 22:17:24');
 
 -- --------------------------------------------------------
 
@@ -231,7 +240,7 @@ ALTER TABLE `tisch`
 -- AUTO_INCREMENT für Tabelle `bestellung`
 --
 ALTER TABLE `bestellung`
-  MODIFY `BestellNr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `BestellNr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT für Tabelle `kunde`

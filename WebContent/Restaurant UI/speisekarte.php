@@ -208,7 +208,8 @@ include("dbconnect.php");
             <div class="modal-body">
                 <div id="detailsContentID">
                     <!--Inhalt im Dialog Mitarbeiter-->
-                    <table class="table">
+                    <!--<table class="table" id="">
+
 
                             <?php 
                                 
@@ -216,7 +217,7 @@ include("dbconnect.php");
                                 //$resultDialog = $db-> query($sqlDialog);
 
                                 //$rowDialog = $resultDialog-> fetch_assoc();
-                                echo "<tr>
+                                /*echo "<tr>
                                         <td class='col-sm-1'>" . $rowDialog['Name'] . "</td>
                                         <td>test1</td>
                                     </tr>
@@ -232,10 +233,10 @@ include("dbconnect.php");
                                         <td>test</td>
                                         <td>test1</td>
                                     </tr>";
-                                echo "testchen";
+                                echo "testchen";*/
                             ?>
                         
-                    </table>
+                    </table>-->
                 </div>
             </div>
             <div class="modal-footer">
@@ -325,30 +326,23 @@ include("dbconnect.php");
 
     <script>
         function getInfoButtonID(id){
-            console.log(id);
+            //console.log(id);
 
-            var variableToSend = id;
-            $.post('speisekarte.php', {variable: variableToSend});
-
-
-                <?php $variable = $_POST['variable'];
-                for ($var = 0; $var < 10; $var++) {
-                     echo $variable;
-                 } 
-                
-                ?>
+            //var variableToSend = id;
+            //$.post('speisekarte.php', {variable: variableToSend});
 
 
 
-            //$.ajax({
-            //    url: "/speisekarte.php",
-            //    method: "POST",
-            //    data: { id },
-            //    //dataType: "JSON",
-            //    success: data => {
-            //        console.log(data)
-            //    }
-            //})
+            $.ajax({
+                url: "details.php",
+                method: "GET",
+                data: { id },
+                //dataType: "JSON",
+                success: data => {
+                    console.log(data);
+                    document.getElementById('detailsContentID').innerHTML = data;
+                }
+            })
 
 
             /*$.ajax({
@@ -420,7 +414,7 @@ include("dbconnect.php");
                     }
 
                 } else {
-                    //header('location: login.php');
+                    header('location: login.php');
                     echo "<h1>BITTE ANMELDEN</h1>";
                 }
                 
