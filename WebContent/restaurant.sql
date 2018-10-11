@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 11. Okt 2018 um 11:52
+-- Erstellungszeit: 11. Okt 2018 um 12:33
 -- Server-Version: 10.1.35-MariaDB
 -- PHP-Version: 7.2.9
 
@@ -80,6 +80,38 @@ INSERT INTO `bestellung` (`BestellNr`, `TischNr`, `SpeiseNr`, `MitarbeiterNr`, `
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `dienstplan`
+--
+
+CREATE TABLE `dienstplan` (
+  `dpID` int(11) NOT NULL,
+  `wochentag` varchar(255) NOT NULL,
+  `schicht` varchar(255) NOT NULL,
+  `mitarbeiterNr1` int(11) NOT NULL,
+  `mitarbeiterNr2` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `dienstplan`
+--
+
+INSERT INTO `dienstplan` (`dpID`, `wochentag`, `schicht`, `mitarbeiterNr1`, `mitarbeiterNr2`) VALUES
+(1, 'Dienstag', 'Frühschicht', 1, 2),
+(2, 'Dienstag', 'Spätschicht', 3, 4),
+(3, 'Mittwoch', 'Frühschicht', 5, 6),
+(4, 'Mittwoch', 'Spätschicht', 1, 2),
+(5, 'Donnerstag', 'Frühschicht', 3, 4),
+(6, 'Donnerstag', 'Spätschicht', 5, 6),
+(7, 'Freitag', 'Frühschicht', 1, 2),
+(8, 'Freitag', 'Spätschicht', 3, 4),
+(9, 'Samstag', 'Frühschicht', 5, 6),
+(10, 'Samstag', 'Spätschicht', 1, 2),
+(11, 'Sonntag', 'Frühschicht', 3, 4),
+(12, 'Sonntag', 'Spätschicht', 5, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `kunde`
 --
 
@@ -119,7 +151,11 @@ CREATE TABLE `mitarbeiter` (
 
 INSERT INTO `mitarbeiter` (`MitarbeiterNr`, `Name`, `Nachname`, `Alter`) VALUES
 (1, 'Max', 'Müller', 30),
-(2, 'Sabine', 'Schmidt', 25);
+(2, 'Sabine', 'Schmidt', 25),
+(3, 'Hans ', 'Viel ', 45),
+(4, 'Simon ', 'Jules', 56),
+(5, 'Herbert', 'Stier', 30),
+(6, 'Simone', 'Klaus', 26);
 
 -- --------------------------------------------------------
 
@@ -208,6 +244,14 @@ ALTER TABLE `bestellung`
   ADD KEY `Tisch-Nr` (`TischNr`);
 
 --
+-- Indizes für die Tabelle `dienstplan`
+--
+ALTER TABLE `dienstplan`
+  ADD PRIMARY KEY (`dpID`),
+  ADD KEY `mitarbeiterNr1` (`mitarbeiterNr1`),
+  ADD KEY `mitarbeiterNr2` (`mitarbeiterNr2`);
+
+--
 -- Indizes für die Tabelle `kunde`
 --
 ALTER TABLE `kunde`
@@ -243,6 +287,12 @@ ALTER TABLE `bestellung`
   MODIFY `BestellNr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT für Tabelle `dienstplan`
+--
+ALTER TABLE `dienstplan`
+  MODIFY `dpID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT für Tabelle `kunde`
 --
 ALTER TABLE `kunde`
@@ -252,7 +302,7 @@ ALTER TABLE `kunde`
 -- AUTO_INCREMENT für Tabelle `mitarbeiter`
 --
 ALTER TABLE `mitarbeiter`
-  MODIFY `MitarbeiterNr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MitarbeiterNr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `speise`
@@ -283,6 +333,13 @@ ALTER TABLE `bestellung`
   ADD CONSTRAINT `bestellung_ibfk_1` FOREIGN KEY (`MitarbeiterNr`) REFERENCES `mitarbeiter` (`MitarbeiterNr`),
   ADD CONSTRAINT `bestellung_ibfk_2` FOREIGN KEY (`SpeiseNr`) REFERENCES `speise` (`SpeiseNr`),
   ADD CONSTRAINT `bestellung_ibfk_3` FOREIGN KEY (`TischNr`) REFERENCES `tisch` (`TischNr`);
+
+--
+-- Constraints der Tabelle `dienstplan`
+--
+ALTER TABLE `dienstplan`
+  ADD CONSTRAINT `dienstplan_ibfk_1` FOREIGN KEY (`mitarbeiterNr1`) REFERENCES `mitarbeiter` (`MitarbeiterNr`),
+  ADD CONSTRAINT `dienstplan_ibfk_2` FOREIGN KEY (`mitarbeiterNr2`) REFERENCES `mitarbeiter` (`MitarbeiterNr`);
 
 --
 -- Constraints der Tabelle `kunde`
