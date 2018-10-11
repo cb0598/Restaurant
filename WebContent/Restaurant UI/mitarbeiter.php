@@ -15,33 +15,6 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <!-- Fixed navbar -->
-    <!--<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Restaurant Plöck</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Start</a></li>   
-            <li><a href="speisekarte.php">Speisekarte</a></li> 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/account.svg"></img><b class="caret"></b> </a>
-                <ul class="dropdown-menu">
-                    <li><a href="login.php">*Anmelden bzw. Benutzername*</a></li> 
-                    <li><a href="logout.php">*Abmelden*</a></li>
-                </ul>
-            </li> 
-          </ul>
-        </div>--><!--/.nav-collapse -->
-      <!--</div>
-    </div>-->
 
     <script>
         $(document).ready(function() {
@@ -101,20 +74,23 @@
                                                     $summe = 0;
                                             }
                                             echo "
-                                                <h3>Tisch Nr. " . $currentRow . "</h3>
-                                                        <table class='table'>
-                                                            <thead>
-                                                                <tr>
-                                                                    <td class='col-sm-1'>BestellNr</td>
-                                                                    <td class='col-sm-1'>Anzahl</td>
-                                                                    <td class='col-sm-4'>Gericht</td>
-                                                                    <td class='col-sm-2'>Speiseart</td>
-                                                                    <td class='col-sm-1'>Bestellzeitpunkt</td>
-                                                                    <td class='col-sm-2'>Einzelpreis</td>
-                                                                    <td class='col-sm-1'>Gesamtpreis</td>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>";
+                                                <button type='button' class='close' aria-label='Close'>
+                  									<span aria-hidden='true'>&times;</span>
+                								</button>
+                								<h3>Tisch Nr. " . $currentRow . "</h3>	
+                                                      <table class='table'>
+                                                          <thead>
+                                                              <tr>
+                                                                  <th class='col-sm-1'>BestellNr</th>
+                                                                  <th class='col-sm-1'>Anzahl</th>
+                                                                  <th class='col-sm-4'>Gericht</th>
+                                                                  <th class='col-sm-2'>Speiseart</th>
+                                                                  <th class='col-sm-1'>Bestellzeitpunkt</th>
+                                                                  <th class='col-sm-2'>Einzelpreis</th>
+                                                                  <th class='col-sm-1'>Gesamtpreis</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody>";
                                         }
 
                                             //Daten
@@ -124,20 +100,21 @@
                                            
                                         $lastRow = $currentRow;
                                     } //ende while
-                                    echo "
-                                                    </tbody>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <td> </td>
-                                                                <td> </td>
-                                                                <td> </td>
-                                                                <td> </td>
-                                                                <td> </td>
-                                                                <td style='text-align: right;''><b>Zu zahlen:</b></td>
-                                                                <td><b>" . number_format((float)$summe, 2, '.', '') . " €</b></td>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>";
+                                    echo "</tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td style='text-align: right;''><b>Zu zahlen:</b></td>
+                                                    <td><b>" . number_format((float)$summe, 2, '.', '') . " €</b></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>";
+                                } else {
+                                	echo "<b>Aktuell keine Bestellungen!</b>";
                                 }
                         ?>
         </div> 
@@ -157,16 +134,22 @@
             // if/else Bedingung einfügen: wenn Tisch belegt & Bestellung aufgegeben, dann rot
 
             ctx.fillStyle = "#FF0000";
-            ctx.fillRect(0,0,100,50);
+            ctx.fillRect(200,75,100,50);
             
             ctx.fillStyle = "#FF0000";
-            ctx.fillRect(0,100,100,50);
+            ctx.fillRect(200,175,100,50);
 
             ctx.fillStyle = "#32CD32";
-            ctx.fillRect(0,200,100,50);
+            ctx.fillRect(200,275,100,50);
 
             ctx.fillStyle = "#32CD32";
-            ctx.fillRect(0,300,100,50);
+            ctx.fillRect(500,75,100,50);
+
+            ctx.fillStyle = "#32CD32";
+            ctx.fillRect(500,175,100,50);
+
+            ctx.fillStyle = "#32CD32";
+            ctx.fillRect(500,275,100,50);
 
         </script> 
     </div>

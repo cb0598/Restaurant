@@ -2,6 +2,9 @@
 session_start();
 session_unset();
 setcookie("userName", "", time()-3600);
+setcookie("isMitarbeiter", "", time()-3600);
+setcookie("mitarbeiterNr", "", time()-3600);
+setcookie("tischNr", "", time()-3600);
 header("Location: index.html");
 ?>
 <!DOCTYPE html>

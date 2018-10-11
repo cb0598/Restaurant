@@ -8,7 +8,7 @@ include("dbconnect.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Speisekarte</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -17,17 +17,26 @@ include("dbconnect.php");
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <body onload="doSum()">
-    <script type="text/javascript" >
-        
-            $(document).ready(function() {
-                $('#navbar').load('navbar.php');
-                $('#footer').load('footer.html');
-                });
-            </script>
+    <script>
+        $(document).ready(function() {
+            $('#navbar').load('navbar.php');
+            $('#footer').load('footer.html');
+            });
+    </script>
+    <style>
+        .form-check-input {
+        width: 15px;
+        height: 15px;
+        }
+    </style>
 
     <!-- Fixed navbar -->
     <div id="navbar">
     </div>
+
+    <?php 
+        $dochtml = new DOMDocument();
+    ?>
     
 	<div class="container">
         <div class="page-header">
@@ -36,7 +45,7 @@ include("dbconnect.php");
         <div class="row">
             <div class="col-sm-8">
                 <div class="thumbnail">
-                    <img src="img/menu.jpg" alt="Speisekarte Single Page Portfolio">
+                    <img src="img/menu.jpg" alt="Speisekarte">
                    
                 </div>
 
@@ -49,6 +58,8 @@ include("dbconnect.php");
                         <th class="col-sm-8">Gericht</th>
                         <th class="col-sm-2">Preis</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,7 +69,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#contact'>Bestellen</button></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -75,6 +86,9 @@ include("dbconnect.php");
                         <th class="col-sm-1">Anzahl</th>
                         <th class="col-sm-8">Gericht</th>
                         <th class="col-sm-2">Preis</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,7 +98,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#contact'>Bestellen</button></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -100,6 +114,9 @@ include("dbconnect.php");
                         <th class="col-sm-1">Anzahl</th>
                         <th class="col-sm-8">Gericht</th>
                         <th class="col-sm-2">Preis</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -109,7 +126,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#contact'>Bestellen</button></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -118,6 +135,9 @@ include("dbconnect.php");
                   </table>
 
                 <h3>Getränke</h3>
+                <div id="test">
+                    
+                </div>
 
                 <table class="table">
                     <thead>
@@ -125,6 +145,9 @@ include("dbconnect.php");
                         <th class="col-sm-1">Anzahl</th>
                         <th class="col-sm-8">Getränk</th>
                         <th class="col-sm-2">Preis</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -134,7 +157,7 @@ include("dbconnect.php");
 
                             if ($result-> num_rows > 0) {
                                 while ($row = $result-> fetch_assoc()) {
-                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#contact'>Bestellen</button></td></tr>";
+                                    echo "<tr><td><input class='form-control text-input' type='number' value='1'></td><td>" . $row["Name"] . "</td><td>" . $row["Preis"] . "€</td><td><button class='btn btn-primary pull-right' data-toggle='modal' data-target='#details' onclick='getInfoButtonID(" . $row['SpeiseNr'] . ")'>Details</button></td><td><input class='form-check-input' type='checkbox' id='" . $row['SpeiseNr'] . "'</input></td></tr>";
                                 }
                             }
                         ?>
@@ -144,8 +167,8 @@ include("dbconnect.php");
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail bg-grey text-center">
-                    <h2>Gericht des Tages</h2>
-                    <p>Entenkeule mit Knödel und Rotkraut </p>
+                    <h2>Gericht des Jahres</h2>
+                    <p>Entenkeule mit Knödel und Rotkraut</p>
                     <img src="img/entenkeule.jpg" alt="Entenkeule">
                     <br>
                     <p>9,50€ </p>
@@ -171,6 +194,58 @@ include("dbconnect.php");
             document.getElementById("output").value = sum +"€";
             }
     </script>
+
+    <!--Modal-Details-->
+    <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h2 class="modal-title" id="verkaufenDialogTitel">Details</h2>
+            </div>
+            <div class="modal-body">
+                <div id="detailsContentID">
+                    <!--Inhalt im Dialog Mitarbeiter-->
+                    <table class="table">
+
+                            <?php 
+                                
+                                //$sqlDialog = "SELECT * FROM speise WHERE SpeiseNr = $test";
+                                //$resultDialog = $db-> query($sqlDialog);
+
+                                //$rowDialog = $resultDialog-> fetch_assoc();
+                                echo "<tr>
+                                        <td class='col-sm-1'>" . $rowDialog['Name'] . "</td>
+                                        <td>test1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>test</td>
+                                        <td>test1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>test</td>
+                                        <td>test1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>test</td>
+                                        <td>test1</td>
+                                    </tr>";
+                                echo "testchen";
+                            ?>
+                        
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>
+                <button class="btn btn-primary" data-dismiss="modal" role="button">Schließen</button>
+                </p>  
+            </div>
+        </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <form action="">
@@ -248,5 +323,114 @@ include("dbconnect.php");
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+    <script>
+        function getInfoButtonID(id){
+            console.log(id);
+
+            var variableToSend = id;
+            $.post('speisekarte.php', {variable: variableToSend});
+
+
+                <?php $variable = $_POST['variable'];
+                for ($var = 0; $var < 10; $var++) {
+                     echo $variable;
+                 } 
+                
+                ?>
+
+
+
+            //$.ajax({
+            //    url: "/speisekarte.php",
+            //    method: "POST",
+            //    data: { id },
+            //    //dataType: "JSON",
+            //    success: data => {
+            //        console.log(data)
+            //    }
+            //})
+
+
+            /*$.ajax({
+            type: "POST",
+            url: "speisekarte.php",
+            data: {"id":id},
+                        success: function(response) {
+                        }})
+
+            <?php
+            //$uid = isset($_POST['id']);
+            //echo "hat geklappt!!!";
+            //rest of code that uses $uid
+            ?>*/
+
+            $("input:checkbox").each(function(){
+                var $this = $(this);
+            
+                if($this.is(":checked")){
+                    console.log($this.attr("id"));
+                }else{
+                    //someObj.fruitsDenied.push($this.attr("id"));
+                }
+            });
+                
+
+            /*$(".clickable").click(function() {
+                var userID = $(this).attr('id');
+                //alert($(this).attr('id'));
+                $.ajax({
+                    type: "POST",
+                    url: 'logtime.php',
+                    data: "userID=" + userID,
+                    success: function(data)
+                    {
+                        alert("success!");
+                    }
+                });
+            });
+
+        <?php //logtime.php
+        //$uid = isset($_POST['userID']);
+        //rest of code that uses $uid
+        ?>*/
+        }
+    </script>
+
+                <?php 
+                if (isset($_COOKIE['tischNr'])) {//prüfen ob TischNr gesetzt
+                    $tischNummer = $_COOKIE['tischNr'];
+
+                    //MitarbeiterNr setzen
+                    if ($tischNummer == 1 || $tischNummer == 3 || $tischNummer == 5) {
+                        $mitarbeiterNummer = 1;
+                    } else {
+                        $mitarbeiterNummer = 2;
+                    }
+
+                    //SPEISE-NR HIER
+
+                    //bestellteMenge HIER
+
+                    $sqlWrite = "INSERT INTO bestellung (TischNr, SpeiseNr, MitarbeiterNr, bestellteMenge)
+                                VALUES ($tischNummer, 10, $mitarbeiterNummer, 2)";
+                    if ($db-> query($sqlWrite) === TRUE) {
+                        echo "Datensatz erfolgreich eingefügt";
+                    } else {
+                        echo "Fehler: " . $sqlWrite . "<br>" . $db->error;
+                    }
+
+                } else {
+                    //header('location: login.php');
+                    echo "<h1>BITTE ANMELDEN</h1>";
+                }
+                
+                
+
+
+
+
+
+
+                ?>
   </body>
 </html>

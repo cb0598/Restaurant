@@ -33,7 +33,6 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wir über uns <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="unserePhilosophie.html">Unsere Philosophie</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li> 
                     <li><a href="oeffnungszeiten.html">Öffnungszeiten</a></li>
                     <li><a href="fotosundvideos.html">Fotos und Videos</a></li>
