@@ -50,7 +50,7 @@
             <?php if (isset($_COOKIE['userName'])) {
             echo "<li><a><b>" . $_COOKIE['userName'] . "</b></a></li>";}?>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../jsptest/img/account.svg"></img><b class="caret"></b> </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/account.svg"></img><b class="caret"></b> </a>
                 <ul class="dropdown-menu">
                     <?php if (!isset($_COOKIE['userName'])) {
                       echo "<li><a href='login.php'>Anmelden</a></li>";
