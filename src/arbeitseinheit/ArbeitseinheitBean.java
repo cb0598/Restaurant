@@ -1,13 +1,13 @@
-package meine_servlets;
+package arbeitseinheit;
 
 // bean mit 3 Variablen mit settern & gettern
 // Objekt dieses Beans wird in Servlet controller class verwendet
-public class MitarbeiterBean {
+public class ArbeitseinheitBean {
 
 	private String wochentag;
 	private String schicht;
-	private String name;
-	private String nachname;
+	private String mitarbeiterNr1;
+	private String mitarbeiterNr2;
 	
 
 	public String getWochentag() {
@@ -23,17 +23,17 @@ public class MitarbeiterBean {
 		this.schicht = schicht;
 	}
 
-	public String getName() {
-		return name;
+	public String getMitarbeiterNr1() {
+		return mitarbeiterNr1;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMitarbeiterNr1(String mitarbeiterNr1) {
+		this.mitarbeiterNr1 = mitarbeiterNr1;
 	}
 	
-	public String getNachname() {
-		return nachname;
+	public String getMitarbeiterNr2() {
+		return mitarbeiterNr2;
 	}
-	public void setNachname(String nachname) {
-		this.nachname = nachname;
+	public void setMitarbeiterNr2(String mitarbeiterNr2) {
+		this.mitarbeiterNr2 = mitarbeiterNr2;
 	}
 }

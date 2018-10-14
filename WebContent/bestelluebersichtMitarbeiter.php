@@ -61,7 +61,7 @@
     
                                            
                                         $lastRow = $currentRow;
-                                    } //ende while
+                                    } //Ende while
                                     echo "</tbody>
                                             <tfoot>
                                                 <tr>
