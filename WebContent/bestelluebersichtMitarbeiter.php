@@ -23,7 +23,7 @@
                                                             <tr>
                                                                 <td> </td>
                                                                 <td> </td>
-                                                                <td> </td>
+                                                                <td style='color: red'><b>" . $isWeitererWunsch . "</b></td>
                                                                 <td> </td>
                                                                 <td> </td>
                                                                 <td style='text-align: right;''><b>Zu zahlen:</b></td>
@@ -54,6 +54,20 @@
                                                           </thead>
                                                           <tbody>";
                                         }
+                                        $sqlTisch = "SELECT * FROM tisch WHERE TischNr = $currentRow";
+                                        $resultTisch = $db-> query($sqlTisch);
+                                        $rowTisch = $resultTisch-> fetch_assoc();
+
+                                        $isWeitererWunsch = "";
+
+                                        if ($rowTisch['weitererWunsch'] == 1) {
+                                            $isWeitererWunsch = "Bedienung gerufen! 
+                                            <button type='button' class='close' aria-label='Close' onclick='deleteWeitererWunsch(" . $currentRow . ")'>
+                                                <span aria-hidden='true'>&times;</span>
+                                            </button>";
+                                        } else {
+                                            $isWeitererWunsch = "";
+                                        }
 
                                             //Daten
                                             echo "<tr><td>" . $row["BestellNr"] . "</td><td>" . $row["bestellteMenge"] . "</td><td>" . $row["Name"] . "</td><td>" . $row["Speiseart"] . "</td><td>" . $row["Bestellzeitpunkt"] . "</td><td>" . $row["Preis"] . " €</td><td>" . number_format((float)$row["Preis"] * $row["bestellteMenge"], 2, '.', '') .     "   €</td></tr>";
@@ -67,7 +81,7 @@
                                                 <tr>
                                                     <td> </td>
                                                     <td> </td>
-                                                    <td> </td>
+                                                    <td style='color: red'><b>" . $isWeitererWunsch . "</b></td>
                                                     <td> </td>
                                                     <td> </td>
                                                     <td style='text-align: right;''><b>Zu zahlen:</b></td>
@@ -79,4 +93,16 @@
                                 } else {
                                 	echo "<b>Aktuell keine Bestellungen!</b>";
                                 }
-                        ?>
+?>
+<script>
+        function deleteWeitererWunsch(tischNr){
+            $.ajax({
+                url: "deleteWeitererWunsch.php",
+                method: "GET",
+                data: { tischNr },
+                success: data => {
+                    
+                }
+            })
+        }
+</script>

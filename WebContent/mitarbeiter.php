@@ -19,7 +19,7 @@
     <script>
         $(document).ready(function() {
             $('#navbar').load('navbar.php');
-            $('#footer').load('footer.html');
+            $('#footer').load('footer.php');
             getData();
 
             setInterval(function(){
@@ -61,17 +61,14 @@
 
             // if/else Bedingung einfügen: wenn Tisch belegt & Bestellung aufgegeben, dann rot
 
-            ctx.fillStyle = "#FF0000";
+            ctx.fillStyle = "#32CD32";
             ctx.fillRect(200,75,100,50);
 
             ctx.fillStyle = "#000000";
             ctx.font="20px Arial";
             ctx.fillText("Tisch Nr. 1",200,145);
-
-            ctx.fillStyle = "#000000";
-            ctx.fillText("!!!",243,105);
             
-            ctx.fillStyle = "#FF0000";
+            ctx.fillStyle = "#32CD32";
             ctx.fillRect(200,175,100,50);
 
             ctx.fillStyle = "#000000";

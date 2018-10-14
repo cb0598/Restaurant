@@ -21,7 +21,7 @@ include("dbconnect.php");
         
             $(document).ready(function() {
                 $('#navbar').load('navbar.php');
-                $('#footer').load('footer.html');
+                $('#footer').load('footer.php');
                 });
             </script>
 

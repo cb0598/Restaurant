@@ -22,7 +22,7 @@ include("server.php");
         <script>
             $(document).ready(function() {
               
-                $('#footer').load('footer.html');
+                $('#footer').load('footer.php');
                 });
             </script>
     <!-- Fixed navbar -->

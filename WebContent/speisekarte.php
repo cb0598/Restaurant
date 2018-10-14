@@ -20,7 +20,7 @@ include("dbconnect.php");
     <script>
         $(document).ready(function() {
             $('#navbar').load('navbar.php');
-            $('#footer').load('footer.html');
+            $('#footer').load('footer.php');
             });
     </script>
     <style>
@@ -241,6 +241,9 @@ include("dbconnect.php");
                 </p>
                 <div class="alert alert-warning">
                     <p>Bitte kontrollieren Sie Ihre Bestellung bevor Sie die Bestellung abschicken. Aufgegebene Bestellungen können nicht rückgängig gemacht werden.</p>
+                </div>
+                <div class="alert alert-danger">
+                    Bitte beachten Sie, dass Ihre Bestellung nur bearbeitet wird, wenn Sie sich mit dem Kundenlogin einloggt haben.
                 </div>
                 
 

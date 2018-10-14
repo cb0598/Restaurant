@@ -27,7 +27,7 @@ header("Location: index.html");
     <script type="text/javascript">
          $(document).ready(function() {
               
-                $('#footer').load('footer.html');
+                $('#footer').load('footer.php');
                 });
 
 
