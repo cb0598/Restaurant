@@ -22,20 +22,13 @@ header("Location: index.html");
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
-  <body onload="zurueckIndex()">
+  <body>
 
-    <script type="text/javascript">
+    <script>
          $(document).ready(function() {
               
                 $('#footer').load('footer.php');
                 });
-
-
-        function zurueckIndex(){
-             window.setTimeout(function(){
-            window.location.href = "index.html";
-            }, 5000); //Test: 5sec 
-        }
 
     </script>
     <!-- Fixed navbar -->

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

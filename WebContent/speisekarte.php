@@ -270,8 +270,6 @@ include("dbconnect.php");
                             amounts.push(this.value);
                         }
                     });
-                }else{
-                    //someObj.fruitsDenied.push($this.attr("id"));
                 }
             });
             for (var i = 0; i < orders.length; i++) {

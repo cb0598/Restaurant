@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ALL);
 error_reporting(0);//alle Fehlermeldungen ausschalten
 $db = new mysqli('localhost', 'root', '', 'restaurant');
 $db->set_charset('utf8');
