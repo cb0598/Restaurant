@@ -10,7 +10,7 @@ include("server.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -25,6 +25,7 @@ include("server.php");
                 $('#footer').load('footer.php');
                 });
             </script>
+            
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -116,40 +117,13 @@ include("server.php");
                         </div>
                     <br>
                     <a class="btn btn-default" data-dismiss="modal">Abbrechen</a>
-                    <button form="loginform" type="submit" class="btn btn-primary" name="login_user">Login</button>
-
-                    <!--<button type="submit" class="btn btn-primary" onclick= "window.location.href = 'mitarbeiter.html'" "mitarbeiterseiteAufrufen()">Anmelden</button>-->                           
+                    <button form="loginform" type="submit" class="btn btn-primary" name="login_user">Login</button>                       
                 </div>
             </div>
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        // Anmeldedaten speichern, sucess: Startseite aufrufen
-        function startseiteAufrufen(){
-            jQuery.ajax({
-                url: "...",
-                type: "POST",
-                dataType: "text",
-                success: function(response){
-                    window.location.href="index.html";
-                }
-            });
-        }
-
-        function mitarbeiterseiteAufrufen(){
-            jQuery.ajax({
-                url: "...",
-                type: "POST",
-                dataType: "text",
-                success: function(response){
-                    window.location.href="mitarbeiter.html";
-                }
-            });
-        }
-    </script>
-            
+      
     <!-- Fixed footer -->        
     <div id="footer">
     </div>

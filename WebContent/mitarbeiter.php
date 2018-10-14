@@ -43,8 +43,7 @@
         </div>
 
         <div class="well" style="font-size: 16px" id="wellID">
-
-                    
+           
         </div> 
 
         <br>
@@ -177,7 +176,6 @@
          		getData();
     		});
 		}
-
 
     </script>
 

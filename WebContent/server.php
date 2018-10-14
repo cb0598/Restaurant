@@ -29,8 +29,6 @@ session_start();
             $result = mysqli_query($db, $query);
 
             if (mysqli_num_rows($result) == 1) {
-                //$_SESSION['username'] = $username;
-                //$_SESSION['success'] = "Sie sind nun eingeloggt";
                 $eingeloggtAls = "$username";
                 setcookie("userName", $eingeloggtAls);
                 $isMitarbeiter = "true";
@@ -66,9 +64,6 @@ session_start();
             $resultGuest = mysqli_query($db, $queryGuest);
 
             if (mysqli_num_rows($resultGuest) == 1) {
-                //$_SESSION['username'] = $username;
-                //$_SESSION['success'] = "Sie sind nun eingeloggt";
-
                 $nummerTisch = "$tischnr";
                 setcookie("tischNr", $nummerTisch);
                 $eingeloggtAls = "Tisch Nr. $tischnr";

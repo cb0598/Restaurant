@@ -16,7 +16,7 @@ include("dbconnect.php");
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
-  <body> <!-- onload="doSum()"-->
+  <body>
     <script>
         $(document).ready(function() {
             $('#navbar').load('navbar.php');
@@ -186,20 +186,6 @@ include("dbconnect.php");
         </div>
     </div>
 
-    <script>
-            function doSum() {
-            var fields = document.getElementsByName("anzahl");
-            var sum = 0;
-            for (var i=0; i<fields.length; i++) {
-            var v = parseFloat(fields[i].value, 10);
-            if (isNaN(v)) v = 0;
-            sum += v;
-            }
-            sum=Math.round(sum*100)/100;
-            document.getElementById("output").value = sum +"€";
-            }
-    </script>
-
     <!--Modal-Details-->
     <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -258,10 +244,6 @@ include("dbconnect.php");
     <div id="footer">
     </div>
     
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
     <script>
         function getInfoButtonID(id){
             $.ajax({

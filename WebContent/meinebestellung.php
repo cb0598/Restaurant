@@ -8,7 +8,7 @@ include("dbconnect.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meine Bestellung</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -16,7 +16,7 @@ include("dbconnect.php");
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
-  <body onload="doSum()">
+  <body>
     <script type="text/javascript" >
         
             $(document).ready(function() {
@@ -25,7 +25,7 @@ include("dbconnect.php");
                 });
             </script>
 
-                <!-- Fixed navbar -->
+    <!-- Fixed navbar -->
     <div id="navbar">
     </div>
     
@@ -34,26 +34,12 @@ include("dbconnect.php");
             <h1>Meine Bestellung</h1>
         </div>
 
-        <script type="text/javascript">
-            function doSum() {
-            var fields = document.getElementsByName("anzahl");
-            var sum = 0;
-            for (var i=0; i<fields.length; i++) {
-            var v = parseFloat(fields[i].value, 10);
-            if (isNaN(v)) v = 0;
-            sum += v;
-            }
-            sum=Math.round(sum*100)/100;
-            document.getElementById("output").value = sum +"€";
-            }
-        </script>
-
-        <form action="">
+		<form action="">
         <div class="well" style="font-size: 16px">
             <table class="table">
                 <thead>
                      <tr>
-                        <th>Anzahl</td>
+                        <th>Anzahl</th>
                         <th>Gericht</th>
                         <th>Speiseart</th>
                         <th>Einzelpreis</th>
@@ -64,14 +50,6 @@ include("dbconnect.php");
                     <?php
                             $tischnummer = $_COOKIE['tischNr'];
                             $sql = "SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr)  WHERE TischNr='$tischnummer'";
-
-                            /*$erg = $db->query("SELECT *, Name FROM bestellung INNER JOIN speise USING (SpeiseNr) WHERE TischNr='$tischnummer'")
-                                        or die($db->error);  
-
-                            $datensatz = $erg->fetch_assoc();//den ersten Datensatz ausgeben
-                            echo "<pre>";
-                            print_r($datensatz);
-                            echo "</pre>";*/
 
                             $result = $db-> query($sql);
 
@@ -105,10 +83,6 @@ include("dbconnect.php");
     <!-- Fixed footer -->        
     <div id="footer">
     </div>
-    
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
 
   </body>
 </html>

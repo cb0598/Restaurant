@@ -63,7 +63,7 @@
                 </ul>
              </li> 
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
   </body>
