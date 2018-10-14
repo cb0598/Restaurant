@@ -58,8 +58,6 @@
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
 
-            // if/else Bedingung einfügen: wenn Tisch belegt & Bestellung aufgegeben, dann rot
-
             ctx.fillStyle = "#32CD32";
             ctx.fillRect(200,75,100,50);
 
@@ -104,10 +102,6 @@
     <div id="footer">
     </div>
     
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
     <!--Modal-Bestätigung-->
     <div class="modal fade" id="bestaetigung" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
